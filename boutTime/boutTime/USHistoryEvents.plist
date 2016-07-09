@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>event00</key>
+	<dict>
+		<key>event</key>
+		<string>The Mayflower Compact was signed</string>
+		<key>year</key>
+		<string>1620</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Mayflower_Compact</string>
+	</dict>
+	<key>event01</key>
+	<dict>
+		<key>event</key>
+		<string>Harvard College was founded.</string>
+		<key>year</key>
+		<string>1636</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Harvard_College</string>
+	</dict>
+	<key>event02</key>
+	<dict>
+		<key>event</key>
+		<string>The Massachusetts Bay Colony founded.</string>
+		<key>year</key>
+		<string>1629</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Massachusetts_Bay_Colony</string>
+	</dict>
+	<key>event03</key>
+	<dict>
+		<key>event</key>
+		<string>Salem Witch trials take place</string>
+		<key>year</key>
+		<string>1692</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Salem_witch_trials</string>
+	</dict>
+	<key>event04</key>
+	<dict>
+		<key>event</key>
+		<string>French and Indian War begins</string>
+		<key>year</key>
+		<string>1754</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/French_and_Indian_War</string>
+	</dict>
+	<key>event05</key>
+	<dict>
+		<key>event</key>
+		<string>French and Indian War ends with the signing of The Treaty of Paris</string>
+		<key>year</key>
+		<string>1763</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Treaty_of_Paris_(1763)</string>
+	</dict>
+	<key>event06</key>
+	<dict>
+		<key>event</key>
+		<string>The Stamp Act passed by the British Parliament</string>
+		<key>year</key>
+		<string>1765</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Stamp_Act_1765</string>
+	</dict>
+	<key>event07</key>
+	<dict>
+		<key>event</key>
+		<string>The Boston Massacre</string>
+		<key>year</key>
+		<string>1770</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Boston_Massacre</string>
+	</dict>
+	<key>event08</key>
+	<dict>
+		<key>event</key>
+		<string>The Boston Tea Party</string>
+		<key>year</key>
+		<string>1773</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Boston_Tea_Party</string>
+	</dict>
+	<key>event09</key>
+	<dict>
+		<key>event</key>
+		<string>First Continental Congress held in Philadelphia, PA.</string>
+		<key>year</key>
+		<string>1774</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/First_Continental_Congress</string>
+	</dict>
+	<key>event10</key>
+	<dict>
+		<key>event</key>
+		<string>Battles of Lexington and Concord take place, beginning the American Revolutionary War.</string>
+		<key>year</key>
+		<string>1775</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Battles_of_Lexington_and_Concord</string>
+	</dict>
+	<key>event11</key>
+	<dict>
+		<key>event</key>
+		<string>United States Declaration of Independence written and signed</string>
+		<key>year</key>
+		<string>1776</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/United_States_Declaration_of_Independence</string>
+	</dict>
+	<key>event12</key>
+	<dict>
+		<key>event</key>
+		<string>The Siege of Charleston, SC begins</string>
+		<key>year</key>
+		<string>1780</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Siege_of_Charleston</string>
+	</dict>
+	<key>event13</key>
+	<dict>
+		<key>event</key>
+		<string>The Articles of Confederation were ratified.</string>
+		<key>year</key>
+		<string>1781</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Articles_of_Confederation</string>
+	</dict>
+	<key>event14</key>
+	<dict>
+		<key>event</key>
+		<string>The American Revolutionary War Ends</string>
+		<key>year</key>
+		<string>1783</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Treaty_of_Paris_(1783)</string>
+	</dict>
+	<key>event15</key>
+	<dict>
+		<key>event</key>
+		<string>The United States Constitution written</string>
+		<key>year</key>
+		<string>1787</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/United_States_Constitution</string>
+	</dict>
+	<key>event16</key>
+	<dict>
+		<key>event</key>
+		<string>The United States Bill of Rights Ratified</string>
+		<key>year</key>
+		<string>1791</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/United_States_Bill_of_Rights</string>
+	</dict>
+	<key>event17</key>
+	<dict>
+		<key>event</key>
+		<string>The Whiskey Rebellion takes place</string>
+		<key>year</key>
+		<string>1793</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Whiskey_Rebellion</string>
+	</dict>
+	<key>event18</key>
+	<dict>
+		<key>event</key>
+		<string>George Washington Dies</string>
+		<key>year</key>
+		<string>1799</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/George_Washington</string>
+	</dict>
+	<key>event19</key>
+	<dict>
+		<key>event</key>
+		<string>Thomas Jefferson elected 3rd President of United States</string>
+		<key>year</key>
+		<string>1801</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Thomas_Jefferson</string>
+	</dict>
+	<key>event20</key>
+	<dict>
+		<key>event</key>
+		<string>Louisiana Purchase is made.</string>
+		<key>year</key>
+		<string>1803</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Louisiana_Purchase</string>
+	</dict>
+	<key>event21</key>
+	<dict>
+		<key>event</key>
+		<string>Lewis and Clark begin their journey west</string>
+		<key>year</key>
+		<string>1804</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Lewis_and_Clark</string>
+	</dict>
+	<key>event22</key>
+	<dict>
+		<key>event</key>
+		<string>British Troops burn Washington D.C.</string>
+		<key>year</key>
+		<string>1814</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Burning_of_Washington</string>
+	</dict>
+	<key>event23</key>
+	<dict>
+		<key>event</key>
+		<string>Mississippi becomes the 20th state</string>
+		<key>year</key>
+		<string>1817</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Mississippi</string>
+	</dict>
+	<key>event24</key>
+	<dict>
+		<key>event</key>
+		<string>The Oregon Trail comes into use by settlers migrating to the Pacific Northwest.</string>
+		<key>year</key>
+		<string>1830</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Oregon_Trail</string>
+	</dict>
+	<key>event25</key>
+	<dict>
+		<key>event</key>
+		<string>The Battle of the Alamo takes place</string>
+		<key>year</key>
+		<string>1836</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Battle_of_the_Alamo</string>
+	</dict>
+	<key>event26</key>
+	<dict>
+		<key>event</key>
+		<string>Texas becomes the 28th State</string>
+		<key>year</key>
+		<string>1845</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Texas_Annexation</string>
+	</dict>
+	<key>event27</key>
+	<dict>
+		<key>event</key>
+		<string>The Mexican–American War begins.</string>
+		<key>year</key>
+		<string>1846</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Mexican–American_War</string>
+	</dict>
+	<key>event28</key>
+	<dict>
+		<key>event</key>
+		<string>The California Gold Rush begins</string>
+		<key>year</key>
+		<string>1849</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/California_Gold_Rush</string>
+	</dict>
+	<key>event29</key>
+	<dict>
+		<key>event</key>
+		<string>John Brown leads a raid on Harper&apos;s Ferry.</string>
+		<key>year</key>
+		<string>1859</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Harper%27s_Ferry,_West_Virginia</string>
+	</dict>
+	<key>event30</key>
+	<dict>
+		<key>event</key>
+		<string>Abraham Lincoln is elected President of the United States.</string>
+		<key>year</key>
+		<string>1860</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Abraham_Lincoln</string>
+	</dict>
+	<key>event31</key>
+	<dict>
+		<key>event</key>
+		<string>American Civil War begins at Fort Sumter.</string>
+		<key>year</key>
+		<string>1861</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Fort_Sumter</string>
+	</dict>
+	<key>event32</key>
+	<dict>
+		<key>event</key>
+		<string>General Robert E. Lee is placed in command of the Army of Northern Virginia.</string>
+		<key>year</key>
+		<string>1862</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Robert_E._Lee</string>
+	</dict>
+	<key>event33</key>
+	<dict>
+		<key>event</key>
+		<string>Abraham Lincoln issues the Emancipation Proclamation</string>
+		<key>year</key>
+		<string>1863</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Emancipation_Proclamation</string>
+	</dict>
+	<key>event34</key>
+	<dict>
+		<key>event</key>
+		<string>Abraham Lincoln assassination</string>
+		<key>year</key>
+		<string>1865</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Abraham_Lincoln_assassination</string>
+	</dict>
+	<key>event35</key>
+	<dict>
+		<key>event</key>
+		<string>The Alaska territory is purchased from Russia.</string>
+		<key>year</key>
+		<string>1867</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Alaska_Purchase</string>
+	</dict>
+	<key>event36</key>
+	<dict>
+		<key>event</key>
+		<string>The First Transcontinental Railroad is completed at Promontory Summit, Utah Territory.</string>
+		<key>year</key>
+		<string>1869</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/First_Transcontinental_Railroad</string>
+	</dict>
+	<key>event37</key>
+	<dict>
+		<key>event</key>
+		<string>Yellowstone National Park is created.</string>
+		<key>year</key>
+		<string>1872</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Yellowstone_National_Park</string>
+	</dict>
+	<key>event38</key>
+	<dict>
+		<key>event</key>
+		<string>Colorado becomes the 38th state.</string>
+		<key>year</key>
+		<string>1876</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Colorado</string>
+	</dict>
+	<key>event39</key>
+	<dict>
+		<key>event</key>
+		<string>Thomas Edison invents the light bulb.</string>
+		<key>year</key>
+		<string>1879</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Thomas_Edison</string>
+	</dict>
+	<key>event40</key>
+	<dict>
+		<key>event</key>
+		<string>The Brooklyn Bridge opens.</string>
+		<key>year</key>
+		<string>1883</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Brooklyn_Bridge</string>
+	</dict>
+	<key>event41</key>
+	<dict>
+		<key>event</key>
+		<string>Yosemite National Park is created.</string>
+		<key>year</key>
+		<string>1890</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Yosemite_National_Park</string>
+	</dict>
+	<key>event42</key>
+	<dict>
+		<key>event</key>
+		<string>The USS Maine explodes in Havana harbor.</string>
+		<key>year</key>
+		<string>1898</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/USS_Maine_(ACR-1)</string>
+	</dict>
+	<key>event43</key>
+	<dict>
+		<key>event</key>
+		<string>President William McKinley assassinated</string>
+		<key>year</key>
+		<string>1901</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Assassination_of_William_McKinley</string>
+	</dict>
+	<key>event44</key>
+	<dict>
+		<key>event</key>
+		<string>The Ford Motor Company is founded</string>
+		<key>year</key>
+		<string>1903</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Ford_Motor_Company</string>
+	</dict>
+	<key>event45</key>
+	<dict>
+		<key>event</key>
+		<string>The Boy Scouts of America is created</string>
+		<key>year</key>
+		<string>1910</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Boy_Scouts_of_America</string>
+	</dict>
+	<key>event46</key>
+	<dict>
+		<key>event</key>
+		<string>The RMS Lusitania was sunk by a German torpedo</string>
+		<key>year</key>
+		<string>1915</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/RMS_Lusitania</string>
+	</dict>
+	<key>event47</key>
+	<dict>
+		<key>event</key>
+		<string>The Treaty of Versailles signed ending WWI</string>
+		<key>year</key>
+		<string>1919</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Treaty_of_Versailles</string>
+	</dict>
+	<key>event48</key>
+	<dict>
+		<key>event</key>
+		<string>Charles Lindbergh made the first trans-Atlantic flight.</string>
+		<key>year</key>
+		<string>1927</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/Charles_Lindbergh</string>
+	</dict>
+	<key>event49</key>
+	<dict>
+		<key>event</key>
+		<string>Franklin Delano Roosevelt is elected President</string>
+		<key>year</key>
+		<string>1933</string>
+		<key>url</key>
+		<string>https://en.wikipedia.org/wiki/United_States_presidential_election,_1932</string>
+	</dict>
+</dict>
+</plist>
