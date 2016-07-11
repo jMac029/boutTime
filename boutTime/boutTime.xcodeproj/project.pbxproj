@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		899B6C981D334E30009A5CF0 /* HistoricalEventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899B6C971D334E30009A5CF0 /* HistoricalEventsModel.swift */; };
 		89FB98431D30BD60007126D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FB98421D30BD60007126D4 /* AppDelegate.swift */; };
 		89FB98451D30BD60007126D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FB98441D30BD60007126D4 /* ViewController.swift */; };
 		89FB98481D30BD60007126D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89FB98461D30BD60007126D4 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		899B6C971D334E30009A5CF0 /* HistoricalEventsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoricalEventsModel.swift; sourceTree = "<group>"; };
 		89FB983F1D30BD60007126D4 /* boutTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = boutTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89FB98421D30BD60007126D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89FB98441D30BD60007126D4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				89FB984B1D30BD60007126D4 /* LaunchScreen.storyboard */,
 				89FB984E1D30BD60007126D4 /* Info.plist */,
 				89FB98541D30BDAB007126D4 /* USHistoryEvents.plist */,
+				899B6C971D334E30009A5CF0 /* HistoricalEventsModel.swift */,
 			);
 			path = boutTime;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				899B6C981D334E30009A5CF0 /* HistoricalEventsModel.swift in Sources */,
 				89FB98451D30BD60007126D4 /* ViewController.swift in Sources */,
 				89FB98431D30BD60007126D4 /* AppDelegate.swift in Sources */,
 			);
@@ -290,6 +294,7 @@
 				89FB98531D30BD60007126D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
