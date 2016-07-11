@@ -23,7 +23,7 @@
 	<key>event02</key>
 	<dict>
 		<key>event</key>
-		<string>The Massachusetts Bay Colony founded.</string>
+		<string>The Massachusetts Bay Colony founded</string>
 		<key>year</key>
 		<string>1629</string>
 		<key>url</key>
@@ -50,7 +50,7 @@
 	<key>event05</key>
 	<dict>
 		<key>event</key>
-		<string>French and Indian War ends with the signing of The Treaty of Paris</string>
+		<string>French and Indian War ends</string>
 		<key>year</key>
 		<string>1763</string>
 		<key>url</key>
