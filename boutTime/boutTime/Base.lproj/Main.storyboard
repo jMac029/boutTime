@@ -17,74 +17,111 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="event00Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19E-df-Cf3">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WCe-Iq-7Ex">
                                 <rect key="frame" x="20" y="20" width="560" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="16"/>
-                                <color key="textColor" red="0.0" green="0.38039215686274508" blue="0.4823529411764706" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="event01Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCW-h3-7jq">
-                                <rect key="frame" x="20" y="128" width="560" height="100"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="16"/>
-                                <color key="textColor" red="0.0" green="0.3803921569" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="event02Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Il-zA-XiO">
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="eventButton01"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gp-2c-W70">
                                 <rect key="frame" x="20" y="236" width="560" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="16"/>
-                                <color key="textColor" red="0.0" green="0.3803921569" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="event03Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHQ-rj-uhv">
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="eventButton03"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cc8-1B-0um">
                                 <rect key="frame" x="20" y="344" width="560" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="16"/>
-                                <color key="textColor" red="0.0" green="0.3803921569" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="eventButton04"/>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmX-x3-zfb">
                                 <rect key="frame" x="535" y="20" width="45" height="100"/>
                                 <state key="normal" title="DownButton01" image="down_full"/>
+                                <connections>
+                                    <action selector="downButton01:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rgm-H3-con"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="md5-8v-hTp">
                                 <rect key="frame" x="535" y="128" width="45" height="50"/>
                                 <state key="normal" title="UpButton01" image="up_half"/>
+                                <connections>
+                                    <action selector="upButton01:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X2a-wT-f9g"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Yz-Dw-uKr">
                                 <rect key="frame" x="535" y="178" width="45" height="50"/>
                                 <state key="normal" title="DownButton02" image="down_half"/>
+                                <connections>
+                                    <action selector="downButton02:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xVJ-Ek-rDP"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Twt-rX-QPc">
                                 <rect key="frame" x="535" y="236" width="45" height="50"/>
                                 <state key="normal" title="UpButton02" image="up_half"/>
+                                <connections>
+                                    <action selector="upButton02:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GaA-w7-rlP"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6uZ-YE-Vz9">
                                 <rect key="frame" x="535" y="286" width="45" height="50"/>
                                 <state key="normal" title="DownButton03" image="down_half"/>
+                                <connections>
+                                    <action selector="downButton03:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hM0-31-5gn"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QRO-La-eKN">
                                 <rect key="frame" x="535" y="344" width="45" height="100"/>
                                 <state key="normal" title="UpButton03" image="up_full"/>
+                                <connections>
+                                    <action selector="upButton03:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LcV-B1-2gh"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIL-eu-eT1">
-                                <rect key="frame" x="176" y="486" width="250" height="60"/>
-                                <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
-                                <state key="normal" image="next_round_success"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Instuction Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AzI-4h-myr">
-                                <rect key="frame" x="234" y="554" width="132" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Instruction Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AzI-4h-myr">
+                                <rect key="frame" x="233" y="554" width="135" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.12156862745098039" green="0.56470588235294117" blue="0.69803921568627447" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="timerLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlF-ws-dZk">
+                                <rect key="frame" x="248" y="452" width="100" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIL-eu-eT1">
+                                <rect key="frame" x="175" y="486" width="250" height="60"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" image="next_round_success"/>
+                                <connections>
+                                    <action selector="endRoundButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BF2-c1-wDV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNP-Q4-3gK">
+                                <rect key="frame" x="20" y="128" width="560" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="eventButton02"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.16470588235294117" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="downButton01" destination="fmX-x3-zfb" id="WG8-n3-kmb"/>
+                        <outlet property="downButton02" destination="9Yz-Dw-uKr" id="npX-A0-GgK"/>
+                        <outlet property="downButton03" destination="6uZ-YE-Vz9" id="Or6-lb-1k8"/>
+                        <outlet property="endRoundButton" destination="pIL-eu-eT1" id="WmH-Kf-xVQ"/>
+                        <outlet property="eventButton01" destination="WCe-Iq-7Ex" id="tTR-Xt-0GF"/>
+                        <outlet property="eventButton02" destination="BNP-Q4-3gK" id="nkv-fr-rGU"/>
+                        <outlet property="eventButton03" destination="1gp-2c-W70" id="C7z-bd-l5a"/>
+                        <outlet property="eventButton04" destination="cc8-1B-0um" id="D2e-Z9-VeN"/>
+                        <outlet property="instructionLabel" destination="AzI-4h-myr" id="M1D-Xb-cNg"/>
+                        <outlet property="timerLabel" destination="vlF-ws-dZk" id="gUD-FF-UDO"/>
+                        <outlet property="upButton01" destination="md5-8v-hTp" id="lmU-EU-xtk"/>
+                        <outlet property="upButton02" destination="Twt-rX-QPc" id="GHK-Lb-bIV"/>
+                        <outlet property="upButton03" destination="QRO-La-eKN" id="Cdr-2i-Eiv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
