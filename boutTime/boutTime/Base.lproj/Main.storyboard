@@ -37,6 +37,24 @@
                                     </mask>
                                 </variation>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="BNP-Q4-3gK">
+                                <rect key="frame" x="20" y="128" width="515" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="GRE-ZL-dKI"/>
+                                    <constraint firstAttribute="width" constant="515" id="OWf-LZ-vk2"/>
+                                    <constraint firstAttribute="height" constant="100" id="dCo-5b-QAT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                                <state key="normal" title="eventButton02"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="GRE-ZL-dKI"/>
+                                        <exclude reference="OWf-LZ-vk2"/>
+                                    </mask>
+                                </variation>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="1gp-2c-W70">
                                 <rect key="frame" x="20" y="236" width="515" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -145,14 +163,8 @@
                                 <color key="textColor" red="0.12156862745098039" green="0.56470588235294117" blue="0.69803921568627447" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="timerLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlF-ws-dZk">
-                                <rect key="frame" x="20" y="452" width="560" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIL-eu-eT1">
-                                <rect key="frame" x="176" y="489" width="250" height="60"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIL-eu-eT1">
+                                <rect key="frame" x="175" y="489" width="250" height="60"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="eRG-bw-Ryk"/>
@@ -160,7 +172,7 @@
                                     <constraint firstAttribute="width" secondItem="pIL-eu-eT1" secondAttribute="height" multiplier="25:6" id="k9v-dZ-MSz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" image="next_round_success"/>
+                                <state key="normal" title="EndRoundButton" image="next_round_success"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="k9v-dZ-MSz"/>
@@ -170,24 +182,12 @@
                                     <action selector="endRoundButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BF2-c1-wDV"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="BNP-Q4-3gK">
-                                <rect key="frame" x="20" y="128" width="515" height="100"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="GRE-ZL-dKI"/>
-                                    <constraint firstAttribute="width" constant="515" id="OWf-LZ-vk2"/>
-                                    <constraint firstAttribute="height" constant="100" id="dCo-5b-QAT"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
-                                <state key="normal" title="eventButton02"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="GRE-ZL-dKI"/>
-                                        <exclude reference="OWf-LZ-vk2"/>
-                                    </mask>
-                                </variation>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="timerLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlF-ws-dZk">
+                                <rect key="frame" x="178" y="489" width="244" height="60"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="50"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.16470588235294117" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -231,9 +231,9 @@
                             <constraint firstItem="WCe-Iq-7Ex" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="l79-0N-4Qt"/>
                             <constraint firstItem="9Yz-Dw-uKr" firstAttribute="leading" secondItem="BNP-Q4-3gK" secondAttribute="trailing" id="lLl-YF-dOW"/>
                             <constraint firstItem="md5-8v-hTp" firstAttribute="top" secondItem="fmX-x3-zfb" secondAttribute="bottom" constant="8" id="ns8-g8-qsv"/>
+                            <constraint firstItem="AzI-4h-myr" firstAttribute="top" secondItem="vlF-ws-dZk" secondAttribute="bottom" constant="8" id="p61-Wt-1me"/>
                             <constraint firstItem="QRO-La-eKN" firstAttribute="leading" secondItem="cc8-1B-0um" secondAttribute="trailing" id="qGc-au-K7j"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Twt-rX-QPc" secondAttribute="trailing" id="qQD-mb-fCv"/>
-                            <constraint firstItem="pIL-eu-eT1" firstAttribute="top" secondItem="vlF-ws-dZk" secondAttribute="bottom" constant="13" id="r1q-Ev-QAe"/>
                             <constraint firstItem="fmX-x3-zfb" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="sqP-Nj-yQ0"/>
                             <constraint firstItem="fmX-x3-zfb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="u0f-bf-90i"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="AzI-4h-myr" secondAttribute="bottom" constant="21" id="uJU-V7-vVd"/>
@@ -250,6 +250,8 @@
                                 <exclude reference="Uqv-fR-eBJ"/>
                                 <exclude reference="c9N-Uz-Wca"/>
                                 <exclude reference="l79-0N-4Qt"/>
+                                <exclude reference="TEk-jV-7bp"/>
+                                <exclude reference="iEj-qB-Q5s"/>
                                 <exclude reference="gVl-1O-kQN"/>
                                 <exclude reference="sqP-Nj-yQ0"/>
                                 <exclude reference="GAF-Dy-grT"/>

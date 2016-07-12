@@ -14,6 +14,12 @@
 		89FB984A1D30BD60007126D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89FB98491D30BD60007126D4 /* Assets.xcassets */; };
 		89FB984D1D30BD60007126D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89FB984B1D30BD60007126D4 /* LaunchScreen.storyboard */; };
 		89FB98551D30BDAB007126D4 /* USHistoryEvents.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89FB98541D30BDAB007126D4 /* USHistoryEvents.plist */; };
+		DF8B2D0E1D356EFB0054189A /* GameSoundTimerEnd.wav in Resources */ = {isa = PBXBuildFile; fileRef = DF8B2D0B1D356EFB0054189A /* GameSoundTimerEnd.wav */; };
+		DF8B2D101D356F160054189A /* GameSoundFinished.wav in Resources */ = {isa = PBXBuildFile; fileRef = DF8B2D0F1D356F160054189A /* GameSoundFinished.wav */; };
+		DF8B2D121D356F360054189A /* GameSoundRetry.wav in Resources */ = {isa = PBXBuildFile; fileRef = DF8B2D111D356F360054189A /* GameSoundRetry.wav */; };
+		DF8B2D141D3570920054189A /* GameSounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8B2D131D3570920054189A /* GameSounds.swift */; };
+		DF8B2D171D35785D0054189A /* GameSoundIncorrectBuzz.wav in Resources */ = {isa = PBXBuildFile; fileRef = DF8B2D151D35785D0054189A /* GameSoundIncorrectBuzz.wav */; };
+		DF8B2D181D35785D0054189A /* GameSoundCorrectDing.wav in Resources */ = {isa = PBXBuildFile; fileRef = DF8B2D161D35785D0054189A /* GameSoundCorrectDing.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +32,12 @@
 		89FB984C1D30BD60007126D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89FB984E1D30BD60007126D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89FB98541D30BDAB007126D4 /* USHistoryEvents.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = USHistoryEvents.plist; sourceTree = "<group>"; };
+		DF8B2D0B1D356EFB0054189A /* GameSoundTimerEnd.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GameSoundTimerEnd.wav; sourceTree = "<group>"; };
+		DF8B2D0F1D356F160054189A /* GameSoundFinished.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GameSoundFinished.wav; sourceTree = "<group>"; };
+		DF8B2D111D356F360054189A /* GameSoundRetry.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GameSoundRetry.wav; sourceTree = "<group>"; };
+		DF8B2D131D3570920054189A /* GameSounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSounds.swift; sourceTree = "<group>"; };
+		DF8B2D151D35785D0054189A /* GameSoundIncorrectBuzz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GameSoundIncorrectBuzz.wav; sourceTree = "<group>"; };
+		DF8B2D161D35785D0054189A /* GameSoundCorrectDing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GameSoundCorrectDing.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,12 +72,18 @@
 			children = (
 				89FB98421D30BD60007126D4 /* AppDelegate.swift */,
 				89FB98441D30BD60007126D4 /* ViewController.swift */,
+				DF8B2D131D3570920054189A /* GameSounds.swift */,
 				89FB98461D30BD60007126D4 /* Main.storyboard */,
 				89FB98491D30BD60007126D4 /* Assets.xcassets */,
 				89FB984B1D30BD60007126D4 /* LaunchScreen.storyboard */,
 				89FB984E1D30BD60007126D4 /* Info.plist */,
 				89FB98541D30BDAB007126D4 /* USHistoryEvents.plist */,
 				899B6C971D334E30009A5CF0 /* HistoricalEventsModel.swift */,
+				DF8B2D0B1D356EFB0054189A /* GameSoundTimerEnd.wav */,
+				DF8B2D0F1D356F160054189A /* GameSoundFinished.wav */,
+				DF8B2D111D356F360054189A /* GameSoundRetry.wav */,
+				DF8B2D151D35785D0054189A /* GameSoundIncorrectBuzz.wav */,
+				DF8B2D161D35785D0054189A /* GameSoundCorrectDing.wav */,
 			);
 			path = boutTime;
 			sourceTree = "<group>";
@@ -128,10 +146,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF8B2D181D35785D0054189A /* GameSoundCorrectDing.wav in Resources */,
 				89FB984D1D30BD60007126D4 /* LaunchScreen.storyboard in Resources */,
 				89FB984A1D30BD60007126D4 /* Assets.xcassets in Resources */,
+				DF8B2D0E1D356EFB0054189A /* GameSoundTimerEnd.wav in Resources */,
 				89FB98551D30BDAB007126D4 /* USHistoryEvents.plist in Resources */,
 				89FB98481D30BD60007126D4 /* Main.storyboard in Resources */,
+				DF8B2D171D35785D0054189A /* GameSoundIncorrectBuzz.wav in Resources */,
+				DF8B2D101D356F160054189A /* GameSoundFinished.wav in Resources */,
+				DF8B2D121D356F360054189A /* GameSoundRetry.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				899B6C981D334E30009A5CF0 /* HistoricalEventsModel.swift in Sources */,
+				DF8B2D141D3570920054189A /* GameSounds.swift in Sources */,
 				89FB98451D30BD60007126D4 /* ViewController.swift in Sources */,
 				89FB98431D30BD60007126D4 /* AppDelegate.swift in Sources */,
 			);

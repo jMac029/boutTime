@@ -76,7 +76,7 @@ class PlistConverter {
 class HistoricalEventsUnarchiver {
     class func historicalEventsFromArray(array: [[String : String]]) -> [HistoricalEvents] {
         
-        var historicalEventArray: [HistoricalEvents] = []
+        var historicalEventsArray: [HistoricalEvents] = []
         
         for historicalEvent in array {
             if let event = historicalEvent["event"],
@@ -84,12 +84,12 @@ class HistoricalEventsUnarchiver {
                 let yearAsInt = Int(year),
                 let url = historicalEvent["url"] {
                 let newHistoricalEvent = HistoricalEvents(event: event, year: yearAsInt, url: url)
-                historicalEventArray.append(newHistoricalEvent)
+                historicalEventsArray.append(newHistoricalEvent)
             }
             
         }
         
-        return historicalEventArray
+        return historicalEventsArray
         
     }
 }

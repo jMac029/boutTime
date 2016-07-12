@@ -8,7 +8,6 @@
 
 import UIKit
 import GameKit
-import AudioToolbox
 
 class ViewController: UIViewController {
     
@@ -27,6 +26,18 @@ class ViewController: UIViewController {
     var timer = NSTimer()
     var seconds = 60
     var timerRunning = false
+    
+    // Sound Effects Variables
+    let loadCorrectSound = SoundEffects.loadGameSoundCorrect(<#T##SoundEffects#>)
+    let playCorrectSound = SoundEffects.playGameSoundCorrect(<#T##SoundEffects#>)
+    let loadIncorrectSound = SoundEffects.loadGameSoundIncorrect(<#T##SoundEffects#>)
+    let playIncorrectSound = SoundEffects.playGameSoundIncorrect(<#T##SoundEffects#>)
+    let loadFinishedSound = SoundEffects.loadGameSoundFinished(<#T##SoundEffects#>)
+    let playFinishedSound = SoundEffects.playGameSoundFinished(<#T##SoundEffects#>)
+    let loadRetrySound = SoundEffects.loadGameSoundRetry(<#T##SoundEffects#>)
+    let playRetySound = SoundEffects.playGameSoundRetry(<#T##SoundEffects#>)
+    let loadTimerEndSound = SoundEffects.loadGameSoundTimerEnd(<#T##SoundEffects#>)
+    let playTimerEndSound = SoundEffects.playGameSoundTimerEnd(<#T##SoundEffects#>)
     
 // MARK: Labels
     
@@ -101,20 +112,18 @@ class ViewController: UIViewController {
     
         seconds -= 1
     
-        timerLabel.text = "Seconds Remaining: \(seconds)"
+        timerLabel.text = "0:\(seconds)"
     
         if seconds == 0 {
         
-        timer.invalidate()
+            timer.invalidate()
         
-        //questionsAsked += 1
+            roundsCompleted += 1
         
-        //loadGameSoundTimerEnd()
-        //playGameSoundTimerEnd()
+            loadTimerEndSound()
+            playTimerEndSound()
         
-        //disableButtons()
-        
-        //loadNextRoundWithDelay(seconds: 3)
+            //disableButtons()
         
         }
     
@@ -123,9 +132,10 @@ class ViewController: UIViewController {
     func resetTimer() {
     
     seconds = 60
-    timerLabel.text = "Seconds Remaining: \(seconds)"
+    timerLabel.text = "0:\(seconds)"
     timerRunning = false
     
     }
+    
 
 }
