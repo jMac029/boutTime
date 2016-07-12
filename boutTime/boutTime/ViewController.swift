@@ -60,6 +60,11 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var endRoundButton: UIButton!
     
+    // Button Arrays
+    
+    var eventButtons: [UIButton] = []
+    var directionButtons: [UIButton] = []
+    
     
 // MARK: Init
     
@@ -78,18 +83,79 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        // Adding Buttons to button arrays
+        
+        eventButtons.append(eventButton01)
+        eventButtons.append(eventButton02)
+        eventButtons.append(eventButton03)
+        eventButtons.append(eventButton04)
+        
+        directionButtons.append(downButton01)
+        directionButtons.append(downButton02)
+        directionButtons.append(downButton03)
+        directionButtons.append(upButton01)
+        directionButtons.append(upButton02)
+        directionButtons.append(upButton03)
+        
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+// MARK: Game Functions
+    
+    func checkAnswer() {
+        
+        roundsCompleted += 1
+        
+    }
 
+    
+// MARK: Shake Feature
+    
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        
+        //Detect shake motion
+        if motion == .MotionShake {
+            
+            resetTimer()
+            checkAnswer()
+        }
+    }
 
 
 // MARK: Helper Methods
+    
+    // Helper Method to enable and disable the buttons after user has answered a question or began another round
+    
+    func enableEventButtons(userInteractionEnabled bool : Bool) {
+        
+        for buttons in eventButtons {
+            
+            if bool == true {
+                buttons.userInteractionEnabled = true
+            } else {
+                buttons.userInteractionEnabled = false
+            }
+        }
+        
+    }
+    
+    func enableDirectionButtons(userInteractionEnabled bool : Bool) {
+        
+        for buttons in directionButtons {
+            
+            if bool == true {
+                buttons.userInteractionEnabled = true
+            } else {
+                buttons.userInteractionEnabled = false
+            }
+        }
+    }
 
 // Lightning Timer Methods copied over from Project 2 and modified for use in this project
 
