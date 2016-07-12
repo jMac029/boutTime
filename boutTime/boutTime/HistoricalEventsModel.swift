@@ -28,7 +28,7 @@ class HistoricalEvents {
     let url: String
     
     init(event: String, year: Int, url: String) {
-    
+        
         self.event = event
         self.year = year
         self.url = url
@@ -48,25 +48,25 @@ struct USHistorialEventsQuiz {
 }
 
 
-// MARK: Helper Classes 
+// MARK: Helper Classes
 
 // Plist Conversion class, mostly copied from the VendingMachine App Course where it was demonstrated
 
 class PlistConverter {
     // type method
-    class func dictionaryFromFile(resource: String, ofType type: String) throws -> [String : AnyObject] {
+    class func arrayFromFile(resource: String, ofType type: String) throws -> [[String : String]] {
         
         guard let path =
             NSBundle.mainBundle().pathForResource(resource, ofType: type) else {
                 throw HistoricalEventsError.InvalidResource
         }
         
-        guard let dictionary = NSDictionary(contentsOfFile: path),
-            let castDictionary = dictionary as? [String: AnyObject] else {
+        guard let array = NSArray(contentsOfFile: path),
+            let castArray = array as? [[String: String]] else {
                 throw HistoricalEventsError.ConversionError
         }
         
-        return castDictionary
+        return castArray
     }
     
 }
@@ -74,22 +74,22 @@ class PlistConverter {
 // Unarchiver Class also mostly copied from the VendingMachine App Course where it was demonstrated
 
 class HistoricalEventsUnarchiver {
-    class func historicalEventsFromDictionary(dictionary: [[String : String]]) -> [HistoricalEvents] {
+    class func historicalEventsFromArray(array: [[String : String]]) -> [HistoricalEvents] {
         
-        var historicalEventDict: [HistoricalEvents] = []
+        var historicalEventArray: [HistoricalEvents] = []
         
-        for historicalEvent in dictionary {
+        for historicalEvent in array {
             if let event = historicalEvent["event"],
                 let year = historicalEvent["year"],
                 let yearAsInt = Int(year),
                 let url = historicalEvent["url"] {
                 let newHistoricalEvent = HistoricalEvents(event: event, year: yearAsInt, url: url)
-                historicalEventDict.append(newHistoricalEvent)
+                historicalEventArray.append(newHistoricalEvent)
             }
             
         }
         
-        return historicalEventDict
+        return historicalEventArray
         
     }
 }
