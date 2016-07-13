@@ -88,6 +88,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //roundedCorners()
+        gameSetup()
+        timerLabel.hidden = true
+        
         // Adding Buttons to button arrays
         
         eventButtons.append(eventButton01)
@@ -102,9 +106,7 @@ class ViewController: UIViewController {
         directionButtons.append(upButton02)
         directionButtons.append(upButton03)
         
-        //roundedCorners()
-        gameSetup()
-        timerLabel.hidden = true
+        
         
     }
     
@@ -165,8 +167,7 @@ class ViewController: UIViewController {
     @IBAction func playAgain(sender: AnyObject) {
         
         
-        gameSetup()
-        beginTimer()
+        self.viewDidLoad()
     
         
     }
