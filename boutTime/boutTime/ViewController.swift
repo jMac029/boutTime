@@ -39,6 +39,7 @@ class ViewController: UIViewController {
     
     let nextRoundFailImage = UIImage(named: "next_round_fail")
     let nextRoundSuccessImage = UIImage(named: "next_round_success")
+    let playAgainImage = UIImage(named: "play_again")
     
     // Sound Effects Variables
     var gameSound: SystemSoundID = 0
@@ -67,6 +68,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var instructionLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     @IBOutlet weak var eventButton01: UIButton!
     @IBOutlet weak var eventButton02: UIButton!
@@ -81,6 +83,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var upButton03: UIButton!
     
     @IBOutlet weak var endRoundButton: UIButton!
+    @IBOutlet weak var playAgainButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,7 +102,7 @@ class ViewController: UIViewController {
         directionButtons.append(upButton02)
         directionButtons.append(upButton03)
         
-        roundedCorners()
+        //roundedCorners()
         gameSetup()
         timerLabel.hidden = true
         
@@ -159,6 +162,16 @@ class ViewController: UIViewController {
         enableDirectionButtons(userInteractionEnabled: true)
     }
     
+    @IBAction func playAgain(sender: AnyObject) {
+        
+        
+        gameSetup()
+        beginTimer()
+    
+        
+    }
+    
+    // hide status bar on top of screen
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
@@ -169,6 +182,22 @@ class ViewController: UIViewController {
     }
 
 // MARK: Game Functions
+    
+    func gameSetup() {
+        
+        roundsCompleted = 0
+        index = 0
+        endRoundButton.hidden = true
+        playAgainButton.hidden = true
+        randomEvents(uSHistoryQuiz)
+        uSHistoryQuiz.historicalEvents.removeAll()
+        updateEventDisplay()
+        timerLabel.hidden = false
+        scoreLabel.hidden = true
+        instructionLabel.text = "Shake to Complete"
+        enableEventButtons(userInteractionEnabled: false)
+        enableDirectionButtons(userInteractionEnabled: true)
+    }
     
     func updateEventDisplay() {
         
@@ -190,18 +219,6 @@ class ViewController: UIViewController {
         
     }
     
-    func gameSetup() {
-        
-        roundsCompleted = 0
-        index = 0
-        endRoundButton.hidden = true
-        randomEvents(uSHistoryQuiz)
-        uSHistoryQuiz.historicalEvents.removeAll()
-        updateEventDisplay()
-        timerLabel.hidden = false
-        enableEventButtons(userInteractionEnabled: false)
-        enableDirectionButtons(userInteractionEnabled: true)
-    }
     
     func randomEvents(historyQuiz: USHistorialEventsQuiz) {
         
@@ -253,6 +270,20 @@ class ViewController: UIViewController {
             resetTimer()
             timerLabel.hidden = true
             
+        }
+        
+        if roundsCompleted == rounds {
+            
+            instructionLabel.text = "Game Over!"
+            timerLabel.hidden = true
+            scoreLabel.hidden = false
+            scoreLabel.text = "Your Score: \(correctAnswers) out of \(roundsCompleted)"
+            endRoundButton.hidden = true
+            playAgainButton.hidden = false
+            playAgainButton.setImage(playAgainImage, forState: .Normal)
+            enableEventButtons(userInteractionEnabled: true)
+            enableDirectionButtons(userInteractionEnabled: false)
+            resetTimer()
         }
     
     }
@@ -360,6 +391,11 @@ class ViewController: UIViewController {
         
             loadGameSoundTimerEnd()
             playGameSoundTimerEnd()
+            
+            instructionLabel.text = "Time's UP! Tap events for more info"
+            
+            checkAnswer()
+            resetTimer()
         
             enableEventButtons(userInteractionEnabled: true)
             enableDirectionButtons(userInteractionEnabled: false)
