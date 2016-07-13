@@ -8,6 +8,7 @@
 
 import UIKit
 import GameKit
+import AudioToolbox
 
 class ViewController: UIViewController {
     
@@ -40,19 +41,12 @@ class ViewController: UIViewController {
     let nextRoundSuccessImage = UIImage(named: "next_round_success")
     
     // Sound Effects Variables
-//    let loadCorrectSound = SoundEffects.loadGameSoundCorrect(<#T##SoundEffects#>)
-//    let playCorrectSound = SoundEffects.playGameSoundCorrect(<#T##SoundEffects#>)
-//    let loadIncorrectSound = SoundEffects.loadGameSoundIncorrect(<#T##SoundEffects#>)
-//    let playIncorrectSound = SoundEffects.playGameSoundIncorrect(<#T##SoundEffects#>)
-//    let loadFinishedSound = SoundEffects.loadGameSoundFinished(<#T##SoundEffects#>)
-//    let playFinishedSound = SoundEffects.playGameSoundFinished(<#T##SoundEffects#>)
-//    let loadRetrySound = SoundEffects.loadGameSoundRetry(<#T##SoundEffects#>)
-//    let playRetySound = SoundEffects.playGameSoundRetry(<#T##SoundEffects#>)
-//    let loadTimerEndSound = SoundEffects.loadGameSoundTimerEnd(<#T##SoundEffects#>)
-//    let playTimerEndSound = SoundEffects.playGameSoundTimerEnd(<#T##SoundEffects#>)
-
-    
-    
+    var gameSound: SystemSoundID = 0
+    var gameSoundCorrect: SystemSoundID = 0
+    var gameSoundIncorrect: SystemSoundID = 0
+    var gameSoundFinished: SystemSoundID = 0
+    var gameSoundRetry: SystemSoundID = 0
+    var gameSoundTimerEnd: SystemSoundID = 0
     
     
 // MARK: Init
@@ -105,7 +99,9 @@ class ViewController: UIViewController {
         directionButtons.append(upButton02)
         directionButtons.append(upButton03)
         
+        roundedCorners()
         gameSetup()
+        timerLabel.hidden = true
         
     }
     
@@ -122,6 +118,50 @@ class ViewController: UIViewController {
         }
     }
     
+// MARK: Actions
+    
+    @IBAction func directionOption(sender: UIButton) {
+        
+        switch sender.tag {
+            
+        case 1:
+            moveButtonTitles(eventButton01, destinationPos: eventButton02)
+            
+        case 2:
+            moveButtonTitles(eventButton02, destinationPos: eventButton01)
+            
+        case 3:
+            moveButtonTitles(eventButton02, destinationPos: eventButton03)
+            
+        case 4:
+            moveButtonTitles(eventButton03, destinationPos: eventButton02)
+            
+        case 5:
+            moveButtonTitles(eventButton03, destinationPos: eventButton04)
+
+        case 6:
+            moveButtonTitles(eventButton04, destinationPos: eventButton03)
+        
+        default:
+            break
+        }
+        
+    }
+    
+    @IBAction func nextRound(sender: AnyObject) {
+        instructionLabel.text = "Shake to Complete"
+        roundQuiz.historicalEvents.removeAll()
+        endRoundButton.hidden = true
+        updateEventDisplay()
+        timerLabel.hidden = false
+        beginTimer()
+        enableEventButtons(userInteractionEnabled: false)
+        enableDirectionButtons(userInteractionEnabled: true)
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -149,7 +189,6 @@ class ViewController: UIViewController {
         }
         
     }
-    
     
     func gameSetup() {
         
@@ -182,7 +221,40 @@ class ViewController: UIViewController {
     func checkAnswer() {
         
         roundsCompleted += 1
+        timer.invalidate()
         
+        let orderedEvents = orderEventsPerRound(roundQuiz)
+        
+        let answer1 = eventButton01.titleLabel?.text
+        let answer2 = eventButton02.titleLabel?.text
+        let answer3 = eventButton03.titleLabel?.text
+        let answer4 = eventButton04.titleLabel?.text
+        
+        if answer1 == orderedEvents[0].event && answer2 == orderedEvents[1].event && answer3 == orderedEvents[2].event && answer4 == orderedEvents[3].event {
+            
+            loadGameSoundCorrect()
+            playGameSoundCorrect()
+            
+            correctAnswers += 1
+            instructionLabel.text = "Tap on event for more info"
+            endRoundButton.hidden = false
+            endRoundButton.setImage(nextRoundSuccessImage, forState: .Normal)
+            enableEventButtons(userInteractionEnabled: true)
+            enableDirectionButtons(userInteractionEnabled: false)
+            
+        } else {
+            
+            loadGameSoundIncorrect()
+            playGameSoundIncorrect()
+            
+            instructionLabel.text = "Tap on event for more info"
+            endRoundButton.hidden = false
+            endRoundButton.setImage(nextRoundFailImage, forState: .Normal)
+            resetTimer()
+            timerLabel.hidden = true
+            
+        }
+    
     }
     
     func displayGameAlert() {
@@ -190,7 +262,9 @@ class ViewController: UIViewController {
         let gameAlert = UIAlertController(title: "US History Quiz", message: "Order the US History events in chronological order by year from oldest to newest.", preferredStyle: .Alert)
         gameAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (alertAction) -> Void in
             
+            self.timerLabel.hidden = false
             self.beginTimer()
+            self.instructionLabel.text = "Shake to Complete"
         }))
         
         presentViewController(gameAlert, animated: true, completion: nil)
@@ -211,6 +285,15 @@ class ViewController: UIViewController {
 
 
 // MARK: Helper Methods
+    
+    func roundedCorners () {
+        
+        for view in eventButtons {
+            
+            view.layer.cornerRadius = 5
+            view.clipsToBounds = true
+        }
+    }
     
     // Helper Method to enable and disable the buttons after user has answered a question or began another round
     
@@ -238,6 +321,16 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    func moveButtonTitles(originalPos: UIButton, destinationPos: UIButton) {
+        
+        //Swap button titles.
+        let firstButtonTitle = originalPos.titleForState(.Normal)
+        let secondButtonTitle = destinationPos.titleForState(.Normal)
+        
+        originalPos.setTitle(secondButtonTitle, forState: .Normal)
+        destinationPos.setTitle(firstButtonTitle, forState: .Normal)
+    }
 
 // Lightning Timer Methods copied over from Project 2 and modified for use in this project
 
@@ -253,9 +346,6 @@ class ViewController: UIViewController {
 
     func countdownTimer() {
     
-        //let selectedQuestionDict = olympicTriviaQuestions[indexOfSelectedQuestion]
-        //let correctAnswer = selectedQuestionDict.correctAnswer
-    
         // countdown by 1 second
     
         seconds -= 1
@@ -268,10 +358,11 @@ class ViewController: UIViewController {
         
             roundsCompleted += 1
         
-//            loadTimerEndSound()
-//            playTimerEndSound()
+            loadGameSoundTimerEnd()
+            playGameSoundTimerEnd()
         
-            //disableButtons()
+            enableEventButtons(userInteractionEnabled: true)
+            enableDirectionButtons(userInteractionEnabled: false)
         
         }
     
@@ -284,6 +375,58 @@ class ViewController: UIViewController {
     timerRunning = false
     
     }
+    
+    // Sound effects helper methods, many of these were copied over from Project 2
+        
+        func loadGameSoundCorrect() {
+            let pathToSoundFile = NSBundle.mainBundle().pathForResource("GameSoundCorrectDing", ofType: "wav")
+            let soundURL = NSURL(fileURLWithPath: pathToSoundFile!)
+            AudioServicesCreateSystemSoundID(soundURL, &gameSoundCorrect)
+        }
+        
+        func playGameSoundCorrect() {
+            AudioServicesPlaySystemSound(gameSoundCorrect)
+        }
+        
+        func loadGameSoundIncorrect() {
+            let pathToSoundFile = NSBundle.mainBundle().pathForResource("GameSoundIncorrectBuzz", ofType: "wav")
+            let soundURL = NSURL(fileURLWithPath: pathToSoundFile!)
+            AudioServicesCreateSystemSoundID(soundURL, &gameSoundIncorrect)
+        }
+        
+        func playGameSoundIncorrect() {
+            AudioServicesPlaySystemSound(gameSoundIncorrect)
+        }
+        
+        func loadGameSoundTimerEnd() {
+            let pathToSoundFile = NSBundle.mainBundle().pathForResource("GameSoundTimerEnd", ofType: "wav")
+            let soundURL = NSURL(fileURLWithPath: pathToSoundFile!)
+            AudioServicesCreateSystemSoundID(soundURL, &gameSoundTimerEnd)
+        }
+        
+        func playGameSoundTimerEnd() {
+            AudioServicesPlaySystemSound(gameSoundTimerEnd)
+        }
+        
+        func loadGameSoundFinished() {
+            let pathToSoundFile = NSBundle.mainBundle().pathForResource("GameSoundFinished", ofType: "wav")
+            let soundURL = NSURL(fileURLWithPath: pathToSoundFile!)
+            AudioServicesCreateSystemSoundID(soundURL, &gameSoundFinished)
+        }
+        
+        func playGameSoundFinished() {
+            AudioServicesPlaySystemSound(gameSoundFinished)
+        }
+        
+        func loadGameSoundRetry() {
+            let pathToSoundFile = NSBundle.mainBundle().pathForResource("GameSoundRetry", ofType: "wav")
+            let soundURL = NSURL(fileURLWithPath: pathToSoundFile!)
+            AudioServicesCreateSystemSoundID(soundURL, &gameSoundRetry)
+        }
+        
+        func playGameSoundRetry() {
+            AudioServicesPlaySystemSound(gameSoundRetry)
+        }
     
 
 }
