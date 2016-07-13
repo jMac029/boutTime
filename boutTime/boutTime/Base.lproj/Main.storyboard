@@ -28,7 +28,7 @@
                                     <constraint firstAttribute="height" constant="120" id="wRk-Ja-kzf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                                <inset key="contentEdgeInsets" minX="5" minY="1" maxX="5" maxY="1"/>
                                 <state key="normal" title="eventButton01"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -46,7 +46,7 @@
                                     <constraint firstAttribute="height" constant="120" id="dCo-5b-QAT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                                <inset key="contentEdgeInsets" minX="5" minY="1" maxX="5" maxY="1"/>
                                 <state key="normal" title="eventButton02"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -64,7 +64,7 @@
                                     <constraint firstAttribute="height" constant="100" id="XHV-nl-1g5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                                <inset key="contentEdgeInsets" minX="5" minY="1" maxX="5" maxY="1"/>
                                 <state key="normal" title="eventButton04"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -180,7 +180,7 @@
                                     <constraint firstAttribute="height" constant="100" id="oUV-oS-bAa"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                                <inset key="contentEdgeInsets" minX="5" minY="1" maxX="5" maxY="1"/>
                                 <state key="normal" title="eventButton03"/>
                                 <variation key="default">
                                     <mask key="constraints">
