@@ -15,55 +15,44 @@ class ViewController: UIViewController {
     
     // Quiz Variables
     var uSHistoryQuiz: USHistorialEventsQuiz
-    var shuffledEvents = USHistorialEventsQuiz(historicalEvents: [])
+    var randomEventsQuiz = USHistorialEventsQuiz(historicalEvents: [])
     var roundQuiz = USHistorialEventsQuiz(historicalEvents: [])
     var correctAnswers = 0
     var roundsCompleted = 0
     let rounds = 6
     var index = 0
+    var wikiUrl = ""
+    var gameAlertViewed = false
     
     // Timer Variables
     var timer = NSTimer()
     var seconds = 60
     var timerRunning = false
     
-    // Sound Effects Variables
-    let loadCorrectSound = SoundEffects.loadGameSoundCorrect(<#T##SoundEffects#>)
-    let playCorrectSound = SoundEffects.playGameSoundCorrect(<#T##SoundEffects#>)
-    let loadIncorrectSound = SoundEffects.loadGameSoundIncorrect(<#T##SoundEffects#>)
-    let playIncorrectSound = SoundEffects.playGameSoundIncorrect(<#T##SoundEffects#>)
-    let loadFinishedSound = SoundEffects.loadGameSoundFinished(<#T##SoundEffects#>)
-    let playFinishedSound = SoundEffects.playGameSoundFinished(<#T##SoundEffects#>)
-    let loadRetrySound = SoundEffects.loadGameSoundRetry(<#T##SoundEffects#>)
-    let playRetySound = SoundEffects.playGameSoundRetry(<#T##SoundEffects#>)
-    let loadTimerEndSound = SoundEffects.loadGameSoundTimerEnd(<#T##SoundEffects#>)
-    let playTimerEndSound = SoundEffects.playGameSoundTimerEnd(<#T##SoundEffects#>)
-    
-// MARK: Labels
-    
-    @IBOutlet weak var timerLabel: UILabel!
-    @IBOutlet weak var instructionLabel: UILabel!
-    
-// MARK: Buttons
-    
-    @IBOutlet weak var eventButton01: UIButton!
-    @IBOutlet weak var eventButton02: UIButton!
-    @IBOutlet weak var eventButton03: UIButton!
-    @IBOutlet weak var eventButton04: UIButton!
-    
-    @IBOutlet weak var downButton01: UIButton!
-    @IBOutlet weak var upButton01: UIButton!
-    @IBOutlet weak var downButton02: UIButton!
-    @IBOutlet weak var upButton02: UIButton!
-    @IBOutlet weak var downButton03: UIButton!
-    @IBOutlet weak var upButton03: UIButton!
-    
-    @IBOutlet weak var endRoundButton: UIButton!
-    
     // Button Arrays
     
     var eventButtons: [UIButton] = []
     var directionButtons: [UIButton] = []
+    
+    // Button Images
+    
+    let nextRoundFailImage = UIImage(named: "next_round_fail")
+    let nextRoundSuccessImage = UIImage(named: "next_round_success")
+    
+    // Sound Effects Variables
+//    let loadCorrectSound = SoundEffects.loadGameSoundCorrect(<#T##SoundEffects#>)
+//    let playCorrectSound = SoundEffects.playGameSoundCorrect(<#T##SoundEffects#>)
+//    let loadIncorrectSound = SoundEffects.loadGameSoundIncorrect(<#T##SoundEffects#>)
+//    let playIncorrectSound = SoundEffects.playGameSoundIncorrect(<#T##SoundEffects#>)
+//    let loadFinishedSound = SoundEffects.loadGameSoundFinished(<#T##SoundEffects#>)
+//    let playFinishedSound = SoundEffects.playGameSoundFinished(<#T##SoundEffects#>)
+//    let loadRetrySound = SoundEffects.loadGameSoundRetry(<#T##SoundEffects#>)
+//    let playRetySound = SoundEffects.playGameSoundRetry(<#T##SoundEffects#>)
+//    let loadTimerEndSound = SoundEffects.loadGameSoundTimerEnd(<#T##SoundEffects#>)
+//    let playTimerEndSound = SoundEffects.playGameSoundTimerEnd(<#T##SoundEffects#>)
+
+    
+    
     
     
 // MARK: Init
@@ -80,6 +69,24 @@ class ViewController: UIViewController {
         super.init(coder: aDecoder)
     }
     
+// MARK: Outlets
+    
+    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var instructionLabel: UILabel!
+    
+    @IBOutlet weak var eventButton01: UIButton!
+    @IBOutlet weak var eventButton02: UIButton!
+    @IBOutlet weak var eventButton03: UIButton!
+    @IBOutlet weak var eventButton04: UIButton!
+    
+    @IBOutlet weak var downButton01: UIButton!
+    @IBOutlet weak var upButton01: UIButton!
+    @IBOutlet weak var downButton02: UIButton!
+    @IBOutlet weak var upButton02: UIButton!
+    @IBOutlet weak var downButton03: UIButton!
+    @IBOutlet weak var upButton03: UIButton!
+    
+    @IBOutlet weak var endRoundButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,6 +105,21 @@ class ViewController: UIViewController {
         directionButtons.append(upButton02)
         directionButtons.append(upButton03)
         
+        gameSetup()
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        
+        //Display game instructions alert to player
+        if gameAlertViewed == true {
+            
+        } else {
+            
+            displayGameAlert()
+            gameAlertViewed = true
+        }
     }
     
 
@@ -108,10 +130,70 @@ class ViewController: UIViewController {
 
 // MARK: Game Functions
     
+    func updateEventDisplay() {
+        
+        if index >= randomEventsQuiz.historicalEvents.count {
+            
+        } else {
+            eventButton01.setTitle(randomEventsQuiz.historicalEvents[index].event, forState: .Normal)
+            eventButton02.setTitle(randomEventsQuiz.historicalEvents[index + 1].event, forState: .Normal)
+            eventButton03.setTitle(randomEventsQuiz.historicalEvents[index + 2].event, forState: .Normal)
+            eventButton04.setTitle(randomEventsQuiz.historicalEvents[index + 3].event, forState: .Normal)
+            
+            roundQuiz.historicalEvents.append(randomEventsQuiz.historicalEvents[index])
+            roundQuiz.historicalEvents.append(randomEventsQuiz.historicalEvents[index + 1])
+            roundQuiz.historicalEvents.append(randomEventsQuiz.historicalEvents[index + 2])
+            roundQuiz.historicalEvents.append(randomEventsQuiz.historicalEvents[index + 3])
+            
+            index += 4
+        }
+        
+    }
+    
+    
+    func gameSetup() {
+        
+        roundsCompleted = 0
+        index = 0
+        endRoundButton.hidden = true
+        randomEvents(uSHistoryQuiz)
+        uSHistoryQuiz.historicalEvents.removeAll()
+        updateEventDisplay()
+        timerLabel.hidden = false
+        enableEventButtons(userInteractionEnabled: false)
+        enableDirectionButtons(userInteractionEnabled: true)
+    }
+    
+    func randomEvents(historyQuiz: USHistorialEventsQuiz) {
+        
+        // select random historical events from the USHistoryEvents array and not repeated
+        
+        let randomEvents = USHistorialEventsQuiz(historicalEvents: GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(uSHistoryQuiz.historicalEvents) as! [HistoricalEvents])
+        
+        randomEventsQuiz = randomEvents
+    }
+    
+    func orderEventsPerRound(events: USHistorialEventsQuiz) -> [HistoricalEvents] {
+        
+        // Sort historical events by date in ascending order
+        return events.historicalEvents.sort({$1.year > $0.year})
+    }
+    
     func checkAnswer() {
         
         roundsCompleted += 1
         
+    }
+    
+    func displayGameAlert() {
+        
+        let gameAlert = UIAlertController(title: "US History Quiz", message: "Order the US History events in chronological order by year from oldest to newest.", preferredStyle: .Alert)
+        gameAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (alertAction) -> Void in
+            
+            self.beginTimer()
+        }))
+        
+        presentViewController(gameAlert, animated: true, completion: nil)
     }
 
     
@@ -186,8 +268,8 @@ class ViewController: UIViewController {
         
             roundsCompleted += 1
         
-            loadTimerEndSound()
-            playTimerEndSound()
+//            loadTimerEndSound()
+//            playTimerEndSound()
         
             //disableButtons()
         
