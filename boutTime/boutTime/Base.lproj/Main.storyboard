@@ -36,6 +36,9 @@
                                         <exclude reference="ZI1-TE-j3p"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="wikiWebView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aCv-dR-QPU"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="BNP-Q4-3gK">
                                 <rect key="frame" x="16" y="156" width="298" height="120"/>
@@ -54,6 +57,9 @@
                                         <exclude reference="OWf-LZ-vk2"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="wikiWebView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BHD-RX-nxc"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="1gp-2c-W70">
                                 <rect key="frame" x="16" y="284" width="298" height="120"/>
@@ -72,6 +78,9 @@
                                         <exclude reference="oUV-oS-bAa"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="wikiWebView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ma2-su-8hX"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="cc8-1B-0um">
                                 <rect key="frame" x="16" y="412" width="298" height="120"/>
@@ -90,6 +99,9 @@
                                         <exclude reference="XHV-nl-1g5"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="wikiWebView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iUO-RE-BKj"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmX-x3-zfb">
                                 <rect key="frame" x="314" y="28" width="45" height="120"/>
@@ -310,11 +322,63 @@
                         <outlet property="upButton01" destination="md5-8v-hTp" id="lmU-EU-xtk"/>
                         <outlet property="upButton02" destination="Twt-rX-QPc" id="GHK-Lb-bIV"/>
                         <outlet property="upButton03" destination="QRO-La-eKN" id="Cdr-2i-Eiv"/>
+                        <segue destination="mmr-fu-c2H" kind="show" identifier="wikiWebView" id="TQ0-8t-2rE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="419.5" y="333.5"/>
+            <point key="canvasLocation" x="491.5" y="427.5"/>
+        </scene>
+        <!--Wiki Web View Controller-->
+        <scene sceneID="y6f-5D-Wyx">
+            <objects>
+                <viewController storyboardIdentifier="WikiWebView" title="Wiki Web View Controller" id="mmr-fu-c2H" customClass="WikiWebViewController" customModule="boutTime" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gox-8X-epz"/>
+                        <viewControllerLayoutGuide type="bottom" id="l3i-XM-doN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3b7-sw-G9b">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gBY-Wd-GpV">
+                                <rect key="frame" x="-4" y="64" width="383" height="603"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UR-lj-D7G">
+                                <rect key="frame" x="-4" y="20" width="383" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="nSf-KP-SAi"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="webview_bar"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gBY-Wd-GpV" firstAttribute="leading" secondItem="3b7-sw-G9b" secondAttribute="leadingMargin" constant="-20" id="34w-rz-Aun"/>
+                            <constraint firstItem="l3i-XM-doN" firstAttribute="top" secondItem="gBY-Wd-GpV" secondAttribute="bottom" id="9ba-ow-rrw"/>
+                            <constraint firstItem="8UR-lj-D7G" firstAttribute="leading" secondItem="3b7-sw-G9b" secondAttribute="leadingMargin" id="Dcs-sd-gEH"/>
+                            <constraint firstItem="8UR-lj-D7G" firstAttribute="leading" secondItem="3b7-sw-G9b" secondAttribute="leadingMargin" constant="-20" id="Fnq-0A-wiF"/>
+                            <constraint firstItem="8UR-lj-D7G" firstAttribute="centerX" secondItem="3b7-sw-G9b" secondAttribute="centerX" id="Kbl-dc-xX2"/>
+                            <constraint firstItem="8UR-lj-D7G" firstAttribute="top" secondItem="gox-8X-epz" secondAttribute="bottom" id="P70-fy-Acx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8UR-lj-D7G" secondAttribute="trailing" id="Xvh-fu-ukQ"/>
+                            <constraint firstItem="gBY-Wd-GpV" firstAttribute="top" secondItem="8UR-lj-D7G" secondAttribute="bottom" constant="-1" id="YUw-tn-HRw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8UR-lj-D7G" secondAttribute="trailing" constant="-20" id="aeR-mB-lmQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gBY-Wd-GpV" secondAttribute="trailing" constant="-20" id="iu7-8m-Al3"/>
+                            <constraint firstItem="gBY-Wd-GpV" firstAttribute="centerX" secondItem="3b7-sw-G9b" secondAttribute="centerX" id="zXS-EM-obF"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Dcs-sd-gEH"/>
+                                <exclude reference="Xvh-fu-ukQ"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cz8-0T-I6r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="897.5" y="1038.5"/>
         </scene>
     </scenes>
     <resources>
@@ -328,5 +392,6 @@
         <image name="up_full_selected" width="158" height="457"/>
         <image name="up_half" width="158" height="229"/>
         <image name="up_half_selected" width="158" height="229"/>
+        <image name="webview_bar" width="1333" height="167"/>
     </resources>
 </document>

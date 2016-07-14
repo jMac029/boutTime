@@ -19,6 +19,8 @@
 		DF8B2D121D356F360054189A /* GameSoundRetry.wav in Resources */ = {isa = PBXBuildFile; fileRef = DF8B2D111D356F360054189A /* GameSoundRetry.wav */; };
 		DF8B2D171D35785D0054189A /* GameSoundIncorrectBuzz.wav in Resources */ = {isa = PBXBuildFile; fileRef = DF8B2D151D35785D0054189A /* GameSoundIncorrectBuzz.wav */; };
 		DF8B2D181D35785D0054189A /* GameSoundCorrectDing.wav in Resources */ = {isa = PBXBuildFile; fileRef = DF8B2D161D35785D0054189A /* GameSoundCorrectDing.wav */; };
+		DF8B2D1E1D371F980054189A /* wikiWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8B2D1D1D371F980054189A /* wikiWebViewController.swift */; };
+		DF8B2D201D3758970054189A /* EndGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8B2D1F1D3758970054189A /* EndGameController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		DF8B2D111D356F360054189A /* GameSoundRetry.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GameSoundRetry.wav; sourceTree = "<group>"; };
 		DF8B2D151D35785D0054189A /* GameSoundIncorrectBuzz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GameSoundIncorrectBuzz.wav; sourceTree = "<group>"; };
 		DF8B2D161D35785D0054189A /* GameSoundCorrectDing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GameSoundCorrectDing.wav; sourceTree = "<group>"; };
+		DF8B2D1D1D371F980054189A /* wikiWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = wikiWebViewController.swift; sourceTree = "<group>"; };
+		DF8B2D1F1D3758970054189A /* EndGameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndGameController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +74,9 @@
 			children = (
 				89FB98421D30BD60007126D4 /* AppDelegate.swift */,
 				89FB98441D30BD60007126D4 /* ViewController.swift */,
+				DF8B2D1F1D3758970054189A /* EndGameController.swift */,
 				89FB98461D30BD60007126D4 /* Main.storyboard */,
+				DF8B2D1D1D371F980054189A /* wikiWebViewController.swift */,
 				89FB98491D30BD60007126D4 /* Assets.xcassets */,
 				89FB984B1D30BD60007126D4 /* LaunchScreen.storyboard */,
 				89FB984E1D30BD60007126D4 /* Info.plist */,
@@ -162,9 +168,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF8B2D201D3758970054189A /* EndGameController.swift in Sources */,
 				899B6C981D334E30009A5CF0 /* HistoricalEventsModel.swift in Sources */,
 				89FB98451D30BD60007126D4 /* ViewController.swift in Sources */,
 				89FB98431D30BD60007126D4 /* AppDelegate.swift in Sources */,
+				DF8B2D1E1D371F980054189A /* wikiWebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -153,6 +153,23 @@ class ViewController: UIViewController {
         
     }
     
+    @IBAction func wikiWebView(sender: UIButton) {
+        
+        let title = sender.currentTitle!
+        
+        for event in uSHistoryQuiz.historicalEvents {
+            
+            if title == event.event {
+                
+                //Set wikiUrl to url of selected historicalEvent then segue to web view
+                wikiUrl = event.url
+                performSegueWithIdentifier("wikiWebView", sender: self)
+            }
+        }
+
+    }
+    
+    
     @IBAction func nextRound(sender: AnyObject) {
         instructionLabel.text = "Shake to Complete"
         roundQuiz.historicalEvents.removeAll()
@@ -166,10 +183,8 @@ class ViewController: UIViewController {
     
     @IBAction func playAgain(sender: AnyObject) {
         
-        
-        self.viewDidLoad()
-    
-        
+        gameSetup()
+
     }
     
     // hide status bar on top of screen
@@ -183,22 +198,6 @@ class ViewController: UIViewController {
     }
 
 // MARK: Game Functions
-    
-    func gameSetup() {
-        
-        roundsCompleted = 0
-        index = 0
-        endRoundButton.hidden = true
-        playAgainButton.hidden = true
-        randomEvents(uSHistoryQuiz)
-        uSHistoryQuiz.historicalEvents.removeAll()
-        updateEventDisplay()
-        timerLabel.hidden = false
-        scoreLabel.hidden = true
-        instructionLabel.text = "Shake to Complete"
-        enableEventButtons(userInteractionEnabled: false)
-        enableDirectionButtons(userInteractionEnabled: true)
-    }
     
     func updateEventDisplay() {
         
@@ -221,27 +220,12 @@ class ViewController: UIViewController {
     }
     
     
-    func randomEvents(historyQuiz: USHistorialEventsQuiz) {
-        
-        // select random historical events from the USHistoryEvents array and not repeated
-        
-        let randomEvents = USHistorialEventsQuiz(historicalEvents: GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(uSHistoryQuiz.historicalEvents) as! [HistoricalEvents])
-        
-        randomEventsQuiz = randomEvents
-    }
-    
-    func orderEventsPerRound(events: USHistorialEventsQuiz) -> [HistoricalEvents] {
-        
-        // Sort historical events by date in ascending order
-        return events.historicalEvents.sort({$1.year > $0.year})
-    }
-    
     func checkAnswer() {
         
         roundsCompleted += 1
         timer.invalidate()
         
-        let orderedEvents = orderEventsPerRound(roundQuiz)
+        var orderedEvents = orderEventsPerRound(roundQuiz)
         
         let answer1 = eventButton01.titleLabel?.text
         let answer2 = eventButton02.titleLabel?.text
@@ -289,6 +273,45 @@ class ViewController: UIViewController {
     
     }
     
+    func gameSetup() {
+        
+        roundsCompleted = 0
+        index = 0
+        endRoundButton.hidden = true
+        playAgainButton.hidden = true
+        randomEvents(uSHistoryQuiz)
+        //uSHistoryQuiz.historicalEvents.removeAll()
+        updateEventDisplay()
+        timerLabel.hidden = false
+        scoreLabel.hidden = true
+        instructionLabel.text = "Shake to Complete"
+        enableEventButtons(userInteractionEnabled: false)
+        enableDirectionButtons(userInteractionEnabled: true)
+    }
+    
+    func resetGame() {
+        
+        
+        
+        gameSetup()
+        
+    }
+    
+    func randomEvents(historyQuiz: USHistorialEventsQuiz) {
+        
+        // select random historical events from the USHistoryEvents array and not repeated
+        
+        let randomEvents = USHistorialEventsQuiz(historicalEvents: GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(uSHistoryQuiz.historicalEvents) as! [HistoricalEvents])
+        
+        randomEventsQuiz = randomEvents
+    }
+    
+    func orderEventsPerRound(events: USHistorialEventsQuiz) -> [HistoricalEvents] {
+        
+        // Sort historical events by date in ascending order
+        return events.historicalEvents.sort({$1.year > $0.year})
+    }
+    
     func displayGameAlert() {
         
         let gameAlert = UIAlertController(title: "US History Quiz", message: "Order the US History events in chronological order by year from oldest to newest.", preferredStyle: .Alert)
@@ -301,6 +324,7 @@ class ViewController: UIViewController {
         
         presentViewController(gameAlert, animated: true, completion: nil)
     }
+
 
     
 // MARK: Shake Feature
@@ -317,13 +341,46 @@ class ViewController: UIViewController {
 
 
 // MARK: Helper Methods
-    
+
+
     func roundedCorners () {
         
         for view in eventButtons {
             
             view.layer.cornerRadius = 5
             view.clipsToBounds = true
+        }
+    }
+    
+    // Segues
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "displayScore" {
+            
+            if let destinationVC = segue.destinationViewController as? EndGameController {
+                
+                //Set correct answers variable in destination view controller to display users score
+                destinationVC.correctAnswers = self.correctAnswers
+            }
+            
+        }else if segue.identifier == "wikiWebView" {
+            
+            if let destinationVC = segue.destinationViewController as? WikiWebViewController {
+                
+                //Set url variable in destination view controller to use with url request
+                destinationVC.wikiUrl = self.wikiUrl
+            }
+        }
+    }
+    
+    @IBAction func unwind(unwindSegue: UIStoryboardSegue) {
+        
+        if unwindSegue.identifier == "unwindSegue" {
+            
+            //Set the game up if the user presses play again
+            gameSetup()
+            beginTimer()
         }
     }
     
@@ -374,6 +431,8 @@ class ViewController: UIViewController {
         
             timerRunning = true
         }
+        
+        
     }
 
     func countdownTimer() {
@@ -401,6 +460,11 @@ class ViewController: UIViewController {
             enableEventButtons(userInteractionEnabled: true)
             enableDirectionButtons(userInteractionEnabled: false)
         
+        }
+        
+        // update timerLabel so that seconds show correctly
+        if seconds < 10 {
+            timerLabel.text = "0:0\(seconds)"
         }
     
     }
