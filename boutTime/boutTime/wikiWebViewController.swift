@@ -10,26 +10,27 @@ import UIKit
 
 class WikiWebViewController: UIViewController {
     
-    var wikiUrl = ""
+    var wikiUrl = "https://en.wikipedia.org/wiki/HTTP_404"
     
-    @IBOutlet weak var webView: UIWebView!
+
+    @IBOutlet weak var wikiWebView: UIWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let requestedURL = NSURL(string: wikiUrl)
-        let request = NSURLRequest(URL: requestedURL!)
-        webView.loadRequest(request)
+        let requestURL = NSURL(string: wikiUrl)
+        let request = NSURLRequest(URL: requestURL!)
+        wikiWebView.loadRequest(request)
         
     }
     
     
-    
-    @IBAction func closeWikiView(sender: AnyObject) {
+    @IBAction func closeWikiWebView(sender: UIButton) {
         
         self.dismissViewControllerAnimated(true, completion: nil)
         
     }
+    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }

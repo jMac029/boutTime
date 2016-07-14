@@ -10,36 +10,26 @@ import UIKit
 
 class EndGameController: UIViewController {
     
-    //-----------------------
-    //MARK: Variables
-    //-----------------------
-    var correctAnswers: Int = 0
+    var correctAnswers = 0
     
-    //-----------------------
-    //MARK: Outlets
-    //-----------------------
+    
     @IBOutlet weak var scoreLabel: UILabel!
     
-    //-----------------------
-    //MARK: View
-    //-----------------------
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         scoreLabel.text = "You scored \(correctAnswers) out of 6"
     }
     
-    //-----------------------
-    //MARK: Button Actions
-    //-----------------------
+
     @IBAction func playAgain() {
         
         self.dismissViewControllerAnimated(true, completion: nil)
+        self.performSegueWithIdentifier("unwindSegue", sender: UIButton.self)
     }
     
-    //-----------------------
-    //MARK: Extra
-    //-----------------------
+
     override func prefersStatusBarHidden() -> Bool {
         return true
     }

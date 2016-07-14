@@ -7,10 +7,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--MainView-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="boutTime" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="MainView" id="BYZ-38-t0r" customClass="ViewController" customModule="boutTime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -37,7 +37,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="wikiWebView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aCv-dR-QPU"/>
+                                    <action selector="showWikiWebView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0rl-oh-k6V"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="BNP-Q4-3gK">
@@ -58,7 +58,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="wikiWebView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BHD-RX-nxc"/>
+                                    <action selector="showWikiWebView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VP6-ft-MoY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="1gp-2c-W70">
@@ -79,7 +79,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="wikiWebView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ma2-su-8hX"/>
+                                    <action selector="showWikiWebView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="scB-jZ-koF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="cc8-1B-0um">
@@ -100,7 +100,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="wikiWebView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iUO-RE-BKj"/>
+                                    <action selector="showWikiWebView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fWu-3U-d7T"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmX-x3-zfb">
@@ -206,7 +206,7 @@
                                     <action selector="nextRound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uRf-Dm-MNf"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dkd-wZ-c2O">
+                            <button hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dkd-wZ-c2O" userLabel="View Score Button">
                                 <rect key="frame" x="62" y="556" width="250" height="60"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                 <constraints>
@@ -214,15 +214,15 @@
                                     <constraint firstAttribute="height" constant="60" id="Y3h-zx-yW4"/>
                                     <constraint firstAttribute="width" constant="250" id="kXB-Wb-XIa"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="playAgainButton" image="play_again"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <state key="normal" title="View Score"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="6uV-hF-IM8"/>
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="playAgain:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9LB-Wr-jYQ"/>
+                                    <segue destination="gI1-25-Qlf" kind="show" identifier="displayScoreSegue" id="Mha-sW-Nhk"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -322,12 +322,61 @@
                         <outlet property="upButton01" destination="md5-8v-hTp" id="lmU-EU-xtk"/>
                         <outlet property="upButton02" destination="Twt-rX-QPc" id="GHK-Lb-bIV"/>
                         <outlet property="upButton03" destination="QRO-La-eKN" id="Cdr-2i-Eiv"/>
-                        <segue destination="mmr-fu-c2H" kind="show" identifier="wikiWebView" id="TQ0-8t-2rE"/>
+                        <segue destination="mmr-fu-c2H" kind="show" identifier="wikiWebView" id="rsN-uB-yPS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="491.5" y="427.5"/>
+        </scene>
+        <!--End Game View Controller-->
+        <scene sceneID="w9z-eG-aLP">
+            <objects>
+                <viewController storyboardIdentifier="End Game Controller" title="End Game View Controller" id="gI1-25-Qlf" customClass="EndGameController" customModule="boutTime" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jTE-gu-T9u"/>
+                        <viewControllerLayoutGuide type="bottom" id="C5b-38-pa4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ME5-Rv-NJe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="scoreLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2K-Dk-80s">
+                                <rect key="frame" x="122" y="319" width="132" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmQ-dP-Ygz">
+                                <rect key="frame" x="48" y="374" width="280" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="Ats-Fy-GVL"/>
+                                    <constraint firstAttribute="height" constant="80" id="ioQ-5w-oyx"/>
+                                </constraints>
+                                <state key="normal" image="play_again"/>
+                                <connections>
+                                    <action selector="playAgain" destination="gI1-25-Qlf" eventType="touchUpInside" id="xGF-Eq-Eoi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.1647058824" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="zmQ-dP-Ygz" firstAttribute="centerX" secondItem="ME5-Rv-NJe" secondAttribute="centerX" id="ATK-Xs-awW"/>
+                            <constraint firstItem="e2K-Dk-80s" firstAttribute="centerY" secondItem="ME5-Rv-NJe" secondAttribute="centerY" id="IxC-SL-BGU"/>
+                            <constraint firstItem="zmQ-dP-Ygz" firstAttribute="top" secondItem="e2K-Dk-80s" secondAttribute="bottom" constant="25" id="dcY-fQ-4gl"/>
+                            <constraint firstItem="e2K-Dk-80s" firstAttribute="centerX" secondItem="ME5-Rv-NJe" secondAttribute="centerX" id="kgw-Le-Vkq"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="scoreLabel" destination="e2K-Dk-80s" id="H3w-TE-9cG"/>
+                        <segue destination="f23-ng-cZE" kind="unwind" identifier="unwindSegue" unwindAction="unwind:" id="yks-cx-nTC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j8m-vu-8O6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="f23-ng-cZE" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="977.5" y="427.5"/>
         </scene>
         <!--Wiki Web View Controller-->
         <scene sceneID="y6f-5D-Wyx">
@@ -351,6 +400,9 @@
                                     <constraint firstAttribute="height" constant="45" id="nSf-KP-SAi"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="webview_bar"/>
+                                <connections>
+                                    <action selector="closeWikiWebView:" destination="mmr-fu-c2H" eventType="touchUpInside" id="wS6-Zt-9P5"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -375,10 +427,14 @@
                         </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="closeWikiWebView" destination="8UR-lj-D7G" id="PFF-DO-eam"/>
+                        <outlet property="wikiWebView" destination="gBY-Wd-GpV" id="OBT-oE-1Eg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cz8-0T-I6r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="897.5" y="1038.5"/>
+            <point key="canvasLocation" x="977.5" y="1260.5"/>
         </scene>
     </scenes>
     <resources>

@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     var index = 0
     var wikiUrl = ""
     var gameAlertViewed = false
+    let url404 = "https://en.wikipedia.org/wiki/HTTP_404"
     
     // Timer Variables
     var timer = NSTimer()
@@ -45,9 +46,6 @@ class ViewController: UIViewController {
     var gameSound: SystemSoundID = 0
     var gameSoundCorrect: SystemSoundID = 0
     var gameSoundIncorrect: SystemSoundID = 0
-    var gameSoundFinished: SystemSoundID = 0
-    var gameSoundRetry: SystemSoundID = 0
-    var gameSoundTimerEnd: SystemSoundID = 0
     
     
 // MARK: Init
@@ -153,21 +151,14 @@ class ViewController: UIViewController {
         
     }
     
-    @IBAction func wikiWebView(sender: UIButton) {
-        
-        let title = sender.currentTitle!
-        
-        for event in uSHistoryQuiz.historicalEvents {
-            
-            if title == event.event {
-                
-                //Set wikiUrl to url of selected historicalEvent then segue to web view
-                wikiUrl = event.url
-                performSegueWithIdentifier("wikiWebView", sender: self)
-            }
-        }
+//      Attempted to make Webview for events to work and could not get it to function correctly
+//    @IBAction func showWikiWebView(sender: UIButton) {
+//        
+//        setWikiURL(sender)
+//        performSegueWithIdentifier("wikiWebView", sender: self)
+//        
+//    }
 
-    }
     
     
     @IBAction func nextRound(sender: AnyObject) {
@@ -181,11 +172,6 @@ class ViewController: UIViewController {
         enableDirectionButtons(userInteractionEnabled: true)
     }
     
-    @IBAction func playAgain(sender: AnyObject) {
-        
-        gameSetup()
-
-    }
     
     // hide status bar on top of screen
     override func prefersStatusBarHidden() -> Bool {
@@ -238,10 +224,10 @@ class ViewController: UIViewController {
             playGameSoundCorrect()
             
             correctAnswers += 1
-            instructionLabel.text = "Tap on event for more info"
+            instructionLabel.text = "Round \(roundsCompleted) of \(rounds)"
             endRoundButton.hidden = false
             endRoundButton.setImage(nextRoundSuccessImage, forState: .Normal)
-            enableEventButtons(userInteractionEnabled: true)
+            enableEventButtons(userInteractionEnabled: false)
             enableDirectionButtons(userInteractionEnabled: false)
             
         } else {
@@ -249,7 +235,9 @@ class ViewController: UIViewController {
             loadGameSoundIncorrect()
             playGameSoundIncorrect()
             
-            instructionLabel.text = "Tap on event for more info"
+            enableEventButtons(userInteractionEnabled: false)
+            enableDirectionButtons(userInteractionEnabled: false)
+            instructionLabel.text = "Round \(roundsCompleted) of \(rounds)"
             endRoundButton.hidden = false
             endRoundButton.setImage(nextRoundFailImage, forState: .Normal)
             resetTimer()
@@ -259,14 +247,13 @@ class ViewController: UIViewController {
         
         if roundsCompleted == rounds {
             
-            instructionLabel.text = "Game Over!"
+            instructionLabel.text = "Rounds Completed!"
             timerLabel.hidden = true
-            scoreLabel.hidden = false
-            scoreLabel.text = "Your Score: \(correctAnswers) out of \(roundsCompleted)"
+            //scoreLabel.hidden = false
+            //scoreLabel.text = "Your Score: \(correctAnswers) out of \(roundsCompleted)"
             endRoundButton.hidden = true
             playAgainButton.hidden = false
-            playAgainButton.setImage(playAgainImage, forState: .Normal)
-            enableEventButtons(userInteractionEnabled: true)
+            enableEventButtons(userInteractionEnabled: false)
             enableDirectionButtons(userInteractionEnabled: false)
             resetTimer()
         }
@@ -289,13 +276,6 @@ class ViewController: UIViewController {
         enableDirectionButtons(userInteractionEnabled: true)
     }
     
-    func resetGame() {
-        
-        
-        
-        gameSetup()
-        
-    }
     
     func randomEvents(historyQuiz: USHistorialEventsQuiz) {
         
@@ -325,6 +305,21 @@ class ViewController: UIViewController {
         presentViewController(gameAlert, animated: true, completion: nil)
     }
 
+    // attempt at setting the url for to be passed on the segue, couldn't get it to work correctly
+//    func setWikiURL(senderButton: UIButton) -> String {
+//        
+//        let title = senderButton.currentTitle!
+//        
+//                for event in uSHistoryQuiz.historicalEvents {
+//        
+//                    if title == event.event {
+//        
+//                        wikiUrl = event.url
+//                    }
+//                }
+//        
+//        return url404
+//    }
 
     
 // MARK: Shake Feature
@@ -356,29 +351,27 @@ class ViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == "displayScore" {
+        if segue.identifier == "displayScoreSegue" {
             
-            if let destinationVC = segue.destinationViewController as? EndGameController {
+            if let destination = segue.destinationViewController as? EndGameController {
                 
-                //Set correct answers variable in destination view controller to display users score
-                destinationVC.correctAnswers = self.correctAnswers
+                destination.correctAnswers = self.correctAnswers
             }
             
-        }else if segue.identifier == "wikiWebView" {
-            
-            if let destinationVC = segue.destinationViewController as? WikiWebViewController {
-                
-                //Set url variable in destination view controller to use with url request
-                destinationVC.wikiUrl = self.wikiUrl
-            }
         }
+//      segue for webview feature, couldn't get it to function correctly
+//        if segue.identifier == "wikiWebView" {
+//            
+//            if let destination = segue.destinationViewController as? WikiWebViewController {
+//                destination.wikiUrl = self.wikiUrl
+//            }
+//        }
     }
     
     @IBAction func unwind(unwindSegue: UIStoryboardSegue) {
         
         if unwindSegue.identifier == "unwindSegue" {
             
-            //Set the game up if the user presses play again
             gameSetup()
             beginTimer()
         }
@@ -448,16 +441,13 @@ class ViewController: UIViewController {
             timer.invalidate()
         
             roundsCompleted += 1
-        
-            loadGameSoundTimerEnd()
-            playGameSoundTimerEnd()
             
-            instructionLabel.text = "Time's UP! Tap events for more info"
+            instructionLabel.text = "Time's UP!"
             
             checkAnswer()
             resetTimer()
         
-            enableEventButtons(userInteractionEnabled: true)
+            enableEventButtons(userInteractionEnabled: false)
             enableDirectionButtons(userInteractionEnabled: false)
         
         }
@@ -497,36 +487,6 @@ class ViewController: UIViewController {
         
         func playGameSoundIncorrect() {
             AudioServicesPlaySystemSound(gameSoundIncorrect)
-        }
-        
-        func loadGameSoundTimerEnd() {
-            let pathToSoundFile = NSBundle.mainBundle().pathForResource("GameSoundTimerEnd", ofType: "wav")
-            let soundURL = NSURL(fileURLWithPath: pathToSoundFile!)
-            AudioServicesCreateSystemSoundID(soundURL, &gameSoundTimerEnd)
-        }
-        
-        func playGameSoundTimerEnd() {
-            AudioServicesPlaySystemSound(gameSoundTimerEnd)
-        }
-        
-        func loadGameSoundFinished() {
-            let pathToSoundFile = NSBundle.mainBundle().pathForResource("GameSoundFinished", ofType: "wav")
-            let soundURL = NSURL(fileURLWithPath: pathToSoundFile!)
-            AudioServicesCreateSystemSoundID(soundURL, &gameSoundFinished)
-        }
-        
-        func playGameSoundFinished() {
-            AudioServicesPlaySystemSound(gameSoundFinished)
-        }
-        
-        func loadGameSoundRetry() {
-            let pathToSoundFile = NSBundle.mainBundle().pathForResource("GameSoundRetry", ofType: "wav")
-            let soundURL = NSURL(fileURLWithPath: pathToSoundFile!)
-            AudioServicesCreateSystemSoundID(soundURL, &gameSoundRetry)
-        }
-        
-        func playGameSoundRetry() {
-            AudioServicesPlaySystemSound(gameSoundRetry)
         }
     
 
