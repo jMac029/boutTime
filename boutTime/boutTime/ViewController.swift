@@ -86,9 +86,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //roundedCorners()
-        gameSetup()
-        timerLabel.hidden = true
         
         // Adding Buttons to button arrays
         
@@ -104,7 +101,9 @@ class ViewController: UIViewController {
         directionButtons.append(upButton02)
         directionButtons.append(upButton03)
         
-        
+        roundedCorners()
+        gameSetup()
+        timerLabel.hidden = true
         
     }
     
@@ -152,12 +151,11 @@ class ViewController: UIViewController {
     }
     
 //      Attempted to make Webview for events to work and could not get it to function correctly
-//    @IBAction func showWikiWebView(sender: UIButton) {
-//        
-//        setWikiURL(sender)
-//        performSegueWithIdentifier("wikiWebView", sender: self)
-//        
-//    }
+
+    @IBAction func wikiWebViewButton(sender: UIButton) {
+        setWikiURL(sender)
+        performSegueWithIdentifier("displayWikiWebView", sender: self)
+    }
 
     
     
@@ -168,7 +166,7 @@ class ViewController: UIViewController {
         updateEventDisplay()
         timerLabel.hidden = false
         beginTimer()
-        enableEventButtons(userInteractionEnabled: false)
+        enableEventButtons(userInteractionEnabled: true)
         enableDirectionButtons(userInteractionEnabled: true)
     }
     
@@ -227,7 +225,7 @@ class ViewController: UIViewController {
             instructionLabel.text = "Round \(roundsCompleted) of \(rounds)"
             endRoundButton.hidden = false
             endRoundButton.setImage(nextRoundSuccessImage, forState: .Normal)
-            enableEventButtons(userInteractionEnabled: false)
+            enableEventButtons(userInteractionEnabled: true)
             enableDirectionButtons(userInteractionEnabled: false)
             
         } else {
@@ -235,7 +233,7 @@ class ViewController: UIViewController {
             loadGameSoundIncorrect()
             playGameSoundIncorrect()
             
-            enableEventButtons(userInteractionEnabled: false)
+            enableEventButtons(userInteractionEnabled: true)
             enableDirectionButtons(userInteractionEnabled: false)
             instructionLabel.text = "Round \(roundsCompleted) of \(rounds)"
             endRoundButton.hidden = false
@@ -253,7 +251,7 @@ class ViewController: UIViewController {
             //scoreLabel.text = "Your Score: \(correctAnswers) out of \(roundsCompleted)"
             endRoundButton.hidden = true
             playAgainButton.hidden = false
-            enableEventButtons(userInteractionEnabled: false)
+            enableEventButtons(userInteractionEnabled: true)
             enableDirectionButtons(userInteractionEnabled: false)
             resetTimer()
         }
@@ -267,7 +265,6 @@ class ViewController: UIViewController {
         endRoundButton.hidden = true
         playAgainButton.hidden = true
         randomEvents(uSHistoryQuiz)
-        //uSHistoryQuiz.historicalEvents.removeAll()
         updateEventDisplay()
         timerLabel.hidden = false
         scoreLabel.hidden = true
@@ -306,20 +303,20 @@ class ViewController: UIViewController {
     }
 
     // attempt at setting the url for to be passed on the segue, couldn't get it to work correctly
-//    func setWikiURL(senderButton: UIButton) -> String {
-//        
-//        let title = senderButton.currentTitle!
-//        
-//                for event in uSHistoryQuiz.historicalEvents {
-//        
-//                    if title == event.event {
-//        
-//                        wikiUrl = event.url
-//                    }
-//                }
-//        
-//        return url404
-//    }
+    func setWikiURL(senderButton: UIButton) -> String {
+        
+        let title = senderButton.currentTitle!
+        
+                for event in uSHistoryQuiz.historicalEvents {
+        
+                    if title == event.event {
+        
+                        wikiUrl = event.url
+                    }
+                }
+        
+        return url404
+    }
 
     
 // MARK: Shake Feature
@@ -360,12 +357,12 @@ class ViewController: UIViewController {
             
         }
 //      segue for webview feature, couldn't get it to function correctly
-//        if segue.identifier == "wikiWebView" {
-//            
-//            if let destination = segue.destinationViewController as? WikiWebViewController {
-//                destination.wikiUrl = self.wikiUrl
-//            }
-//        }
+        if segue.identifier == "displayWikiWebView" {
+            
+            if let destination = segue.destinationViewController as? WikiWebViewController {
+                destination.wikiUrl = self.wikiUrl
+            }
+        }
     }
     
     @IBAction func unwind(unwindSegue: UIStoryboardSegue) {
@@ -447,7 +444,7 @@ class ViewController: UIViewController {
             checkAnswer()
             resetTimer()
         
-            enableEventButtons(userInteractionEnabled: false)
+            enableEventButtons(userInteractionEnabled: true)
             enableDirectionButtons(userInteractionEnabled: false)
         
         }
@@ -488,6 +485,7 @@ class ViewController: UIViewController {
         func playGameSoundIncorrect() {
             AudioServicesPlaySystemSound(gameSoundIncorrect)
         }
+
     
 
 }
