@@ -5,6 +5,7 @@
 //  Created by James McMillan on 7/8/16.
 //  Copyright © 2016 jamesdmcmillan. All rights reserved.
 //
+//  Team Treehouse iOS Techdegree Project 3 - Bout Time, Build a Timeline Quiz App from Scratch
 
 import UIKit
 import GameKit
@@ -152,7 +153,7 @@ class ViewController: UIViewController {
         
     }
     
-//      Attempted to make Webview for events to work and could not get it to function correctly
+//Action to bring up the Web View feature
 
     @IBAction func wikiWebViewButton(sender: UIButton) {
         setWikiURL(sender)

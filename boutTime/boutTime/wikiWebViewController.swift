@@ -5,6 +5,7 @@
 //  Created by James McMillan on 7/13/16.
 //  Copyright © 2016 jamesdmcmillan. All rights reserved.
 //
+//  Team Treehouse iOS Techdegree Project 3 - Bout Time, Build a Timeline Quiz App from Scratch
 
 import UIKit
 
