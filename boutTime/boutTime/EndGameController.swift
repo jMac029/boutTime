@@ -11,6 +11,7 @@ import UIKit
 class EndGameController: UIViewController {
     
     var correctAnswers = 0
+    let roundsCompleted = 6
     
     
     @IBOutlet weak var scoreLabel: UILabel!
@@ -19,8 +20,9 @@ class EndGameController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scoreLabel.text = "You scored \(correctAnswers) out of 6"
+        displayScore()
     }
+    
     
 
     @IBAction func playAgain() {
@@ -37,4 +39,14 @@ class EndGameController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    func displayScore() {
+        
+        if correctAnswers == roundsCompleted {
+            scoreLabel.text = "Congratulations! \nYou've Aced the Quiz! \nwith a score of \(correctAnswers) out of 6"
+        } else if correctAnswers < roundsCompleted {
+            scoreLabel.text = "Time to brush up on your \nU.S. History! \nyou scored \(correctAnswers) out of 6"
+        }
+    }
+
 }

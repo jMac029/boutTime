@@ -65,8 +65,8 @@ class ViewController: UIViewController {
 // MARK: Outlets
     
     @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var roundsLabel: UILabel!
     @IBOutlet weak var instructionLabel: UILabel!
-    @IBOutlet weak var scoreLabel: UILabel!
     
     @IBOutlet weak var eventButton01: UIButton!
     @IBOutlet weak var eventButton02: UIButton!
@@ -104,6 +104,8 @@ class ViewController: UIViewController {
         roundedCorners()
         gameSetup()
         timerLabel.hidden = true
+        instructionLabel.hidden = true
+        roundsLabel.hidden = true
         
     }
     
@@ -127,22 +129,22 @@ class ViewController: UIViewController {
         switch sender.tag {
             
         case 1:
-            moveButtonTitles(eventButton01, destinationPos: eventButton02)
+            moveButtonTitles(eventButton01, destination: eventButton02)
             
         case 2:
-            moveButtonTitles(eventButton02, destinationPos: eventButton01)
+            moveButtonTitles(eventButton02, destination: eventButton01)
             
         case 3:
-            moveButtonTitles(eventButton02, destinationPos: eventButton03)
+            moveButtonTitles(eventButton02, destination: eventButton03)
             
         case 4:
-            moveButtonTitles(eventButton03, destinationPos: eventButton02)
+            moveButtonTitles(eventButton03, destination: eventButton02)
             
         case 5:
-            moveButtonTitles(eventButton03, destinationPos: eventButton04)
+            moveButtonTitles(eventButton03, destination: eventButton04)
 
         case 6:
-            moveButtonTitles(eventButton04, destinationPos: eventButton03)
+            moveButtonTitles(eventButton04, destination: eventButton03)
         
         default:
             break
@@ -161,12 +163,13 @@ class ViewController: UIViewController {
     
     @IBAction func nextRound(sender: AnyObject) {
         instructionLabel.text = "Shake to Complete"
+        roundsLabel.hidden = true
         roundQuiz.historicalEvents.removeAll()
         endRoundButton.hidden = true
         updateEventDisplay()
         timerLabel.hidden = false
         beginTimer()
-        enableEventButtons(userInteractionEnabled: true)
+        enableEventButtons(userInteractionEnabled: false)
         enableDirectionButtons(userInteractionEnabled: true)
     }
     
@@ -222,11 +225,15 @@ class ViewController: UIViewController {
             playGameSoundCorrect()
             
             correctAnswers += 1
-            instructionLabel.text = "Round \(roundsCompleted) of \(rounds)"
+            roundsLabel.hidden = false
+            roundsLabel.text = "Round \(roundsCompleted) of \(rounds)"
+            instructionLabel.text = "Tap events to learn more"
+            timerLabel.hidden = true
             endRoundButton.hidden = false
             endRoundButton.setImage(nextRoundSuccessImage, forState: .Normal)
             enableEventButtons(userInteractionEnabled: true)
             enableDirectionButtons(userInteractionEnabled: false)
+            resetTimer()
             
         } else {
             
@@ -235,7 +242,9 @@ class ViewController: UIViewController {
             
             enableEventButtons(userInteractionEnabled: true)
             enableDirectionButtons(userInteractionEnabled: false)
-            instructionLabel.text = "Round \(roundsCompleted) of \(rounds)"
+            roundsLabel.hidden = false
+            roundsLabel.text = "Round \(roundsCompleted) of \(rounds)"
+            instructionLabel.text = "Tap events to learn more"
             endRoundButton.hidden = false
             endRoundButton.setImage(nextRoundFailImage, forState: .Normal)
             resetTimer()
@@ -245,10 +254,10 @@ class ViewController: UIViewController {
         
         if roundsCompleted == rounds {
             
-            instructionLabel.text = "Rounds Completed!"
+            roundsLabel.hidden = false
+            roundsLabel.text = "Rounds Completed!"
+            instructionLabel.text = "Tap events to learn more"
             timerLabel.hidden = true
-            //scoreLabel.hidden = false
-            //scoreLabel.text = "Your Score: \(correctAnswers) out of \(roundsCompleted)"
             endRoundButton.hidden = true
             playAgainButton.hidden = false
             enableEventButtons(userInteractionEnabled: true)
@@ -261,13 +270,15 @@ class ViewController: UIViewController {
     func gameSetup() {
         
         roundsCompleted = 0
+        correctAnswers = 0
         index = 0
         endRoundButton.hidden = true
         playAgainButton.hidden = true
         randomEvents(uSHistoryQuiz)
         updateEventDisplay()
         timerLabel.hidden = false
-        scoreLabel.hidden = true
+        roundsLabel.hidden = true
+        instructionLabel.hidden = false
         instructionLabel.text = "Shake to Complete"
         enableEventButtons(userInteractionEnabled: false)
         enableDirectionButtons(userInteractionEnabled: true)
@@ -289,12 +300,15 @@ class ViewController: UIViewController {
         return events.historicalEvents.sort({$1.year > $0.year})
     }
     
+    // display Alert with instructions on how to play the game when the view first loads up.
+    
     func displayGameAlert() {
         
-        let gameAlert = UIAlertController(title: "US History Quiz", message: "Order the US History events in chronological order by year from oldest to newest.", preferredStyle: .Alert)
+        let gameAlert = UIAlertController(title: "US History Quiz", message: "Order the US History events in chronological order by year from oldest to newest. \n\n Use the directional buttons on the right to sort the events", preferredStyle: .Alert)
         gameAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (alertAction) -> Void in
             
             self.timerLabel.hidden = false
+            self.instructionLabel.hidden = false
             self.beginTimer()
             self.instructionLabel.text = "Shake to Complete"
         }))
@@ -319,7 +333,7 @@ class ViewController: UIViewController {
     }
 
     
-// MARK: Shake Feature
+// MARK: Shake to complete Feature
     
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
         
@@ -334,7 +348,8 @@ class ViewController: UIViewController {
 
 // MARK: Helper Methods
 
-
+    
+    // round the corners of the event buttons for better UI/UX and to match the mockups
     func roundedCorners () {
         
         for view in eventButtons {
@@ -356,7 +371,7 @@ class ViewController: UIViewController {
             }
             
         }
-//      segue for webview feature, couldn't get it to function correctly
+        //segue for webview feature
         if segue.identifier == "displayWikiWebView" {
             
             if let destination = segue.destinationViewController as? WikiWebViewController {
@@ -364,6 +379,8 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    //unwind the Main View after segueing from the End Game View
     
     @IBAction func unwind(unwindSegue: UIStoryboardSegue) {
         
@@ -401,17 +418,19 @@ class ViewController: UIViewController {
         }
     }
     
-    func moveButtonTitles(originalPos: UIButton, destinationPos: UIButton) {
+    // function to move button titles
+    
+    func moveButtonTitles(original: UIButton, destination: UIButton) {
         
         //Swap button titles.
-        let firstButtonTitle = originalPos.titleForState(.Normal)
-        let secondButtonTitle = destinationPos.titleForState(.Normal)
+        let firstButtonTitle = original.titleForState(.Normal)
+        let secondButtonTitle = destination.titleForState(.Normal)
         
-        originalPos.setTitle(secondButtonTitle, forState: .Normal)
-        destinationPos.setTitle(firstButtonTitle, forState: .Normal)
+        original.setTitle(secondButtonTitle, forState: .Normal)
+        destination.setTitle(firstButtonTitle, forState: .Normal)
     }
 
-// Lightning Timer Methods copied over from Project 2 and modified for use in this project
+    // Lightning Timer Methods copied over from Project 2 and modified for use in this project
 
     func beginTimer() {
     
@@ -458,9 +477,9 @@ class ViewController: UIViewController {
 
     func resetTimer() {
     
-    seconds = 60
-    timerLabel.text = "0:\(seconds)"
-    timerRunning = false
+        seconds = 60
+        timerLabel.text = "0:\(seconds)"
+        timerRunning = false
     
     }
     
